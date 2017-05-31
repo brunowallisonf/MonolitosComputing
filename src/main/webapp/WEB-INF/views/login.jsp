@@ -16,25 +16,24 @@
 		</div>
 	</header>
 	<div class=row>
-		<div class="panel panel-default col-lg-6 col-xs-12 col-lg-offset-4">
+		<div class="panel panel-default col-lg-6 col-xs-12 col-lg-offset-3">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Login</h3>
 			  </div>
 			  <div class="panel-body">
 			    <form action="post">
 				    <div class="input-group">
-						  <span class="input-group-addon" id="basic-addon1">Username</span>
-						  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="username">
+						  <span class="input-group-addon" id="basic-addon1">Usuario</span>
+						  <input type="text" class="form-control" placeholder="Usuario" aria-describedby="basic-addon1" name="username">
 					</div>
 					<br>
 					<div class="input-group">
-						  <span class="input-group-addon" id="basic-addon1">Password</span>
-						  <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password">
+						  <span class="input-group-addon" id="basic-addon1">Senha</span>
+						  <input type="password" class="form-control" placeholder="Senha" aria-describedby="basic-addon1" name="password">
 					</div>
-					<button type="submit" class="btn btn-primary">Primary</button>
-			    
+					<br>
+					<button type="submit" class="btn btn-primary pull-right">Entrar</button>
 			    </form>
-			    
 		 	 </div>
 		</div>
 	</div>
