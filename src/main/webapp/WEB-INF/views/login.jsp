@@ -32,7 +32,7 @@
 						  <input type="password" class="form-control" placeholder="Senha" aria-describedby="basic-addon1" name="password">
 					</div>
 					<br>
-					<button type="submit" class="btn btn-primary pull-right">Entrar</button>
+					<button type="submit" class="btn btn-primary pull-right">Entrar </button>
 			    </form>
 		 	 </div>
 		</div>
