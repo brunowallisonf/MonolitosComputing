@@ -21,7 +21,7 @@
 			    <h3 class="panel-title">Login</h3>
 			  </div>
 			  <div class="panel-body">
-			    <form action="post">
+			    <form method="POST" action="login">
 				    <div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1">Usuario</span>
 						  <input type="text" class="form-control" placeholder="Usuario" aria-describedby="basic-addon1" name="username">
@@ -34,6 +34,7 @@
 					<br>
 					<button type="submit" class="btn btn-primary pull-right">Entrar </button>
 			    </form>
+			    
 		 	 </div>
 		</div>
 	</div>
