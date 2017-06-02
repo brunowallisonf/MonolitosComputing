@@ -1,5 +1,7 @@
 package br.com.computingforum.controllers;
 
+import javax.jws.WebMethod;
+import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.Pattern;
@@ -8,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -20,7 +24,8 @@ import br.com.computingforum.model.User;
 public class UserController {
 	@Autowired
 	UserDao dao;
-	@GetMapping("/login")
+	
+	@PostMapping("/login")
 	public String login (HttpServletRequest request){
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -34,10 +39,12 @@ public class UserController {
 		return "/";
 	}
 	
-	@GetMapping("/cadastro")
+	
+	@PostMapping("/cadastrar")
 	public String createUser(@RequestBody  User user){
 		dao.save(user);
 		return "login";
 	}
+	
 	
 }
