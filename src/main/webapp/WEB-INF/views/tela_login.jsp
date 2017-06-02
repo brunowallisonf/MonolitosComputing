@@ -33,8 +33,9 @@
 					</div>
 					<br>
 					<button type="submit" class="btn btn-primary pull-right">Entrar </button>
+					<button type="button" class="btn btn-secondary">Cadastre - se</button>
+					
 			    </form>
-			    
 		 	 </div>
 		</div>
 	</div>
