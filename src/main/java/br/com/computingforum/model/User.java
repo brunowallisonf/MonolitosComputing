@@ -1,18 +1,23 @@
 package br.com.computingforum.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.jboss.logging.Message;
 
 @Entity(name="users")
 public class User {
 	@Id
+	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+")
 	private String username;
 	
 	private String bio;
 	
+	@Pattern(regexp="([a-z]|[A-Z]+) ([a-z]|[A-Z]+)")
 	private String fullname;
 	
+	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+")
 	private String password;
 	
 	@Email
