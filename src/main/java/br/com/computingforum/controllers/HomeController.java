@@ -10,6 +10,6 @@ public class HomeController
    @GetMapping("/")
    public String index()
    {
-      return "/tela_login";
+      return "/home";
    }
 }

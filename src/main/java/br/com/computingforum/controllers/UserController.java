@@ -45,7 +45,7 @@ public class UserController {
 	public String createUser(@ModelAttribute("form")  User user){
 		user.setIsAdmin(false);
 		dao.save(user);
-		return "login";
+		return "redirect:login";
 	}
 	
 //	@GetMapping("/")
