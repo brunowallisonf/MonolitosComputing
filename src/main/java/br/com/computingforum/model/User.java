@@ -14,7 +14,7 @@ public class User {
 	
 	private String bio;
 	
-	@Pattern(regexp="([a-z]|[A-Z]+) ([a-z]|[A-Z]+)")
+	@Pattern(regexp="([a-zA-Z]+)(([a-zA-Z]| )*)")
 	private String fullname;
 	
 	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+")

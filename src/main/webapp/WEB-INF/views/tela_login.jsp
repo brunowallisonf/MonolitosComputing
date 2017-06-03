@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
@@ -51,12 +50,50 @@
         <h4 class="modal-title">Cadastro</h4>
       </div>
       <div class="modal-body">
+    <div class="row">
+        <form action="cadastrar" method="post" class="col-xs-10">
         
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
-      </div>
+        	<div class="form-group">
+		  			<label for="username" class="col-2 col-form-label"> Usuario:</label>
+		  			<div class="col-10">
+		  			<input class="form-control" type="text" placeholder="Usuario" id="username" name="username">
+		  			
+  				</div>
+			</div>
+			
+			<div class="form-group">
+		  			<label for="fullname" class="col-2 col-form-label">Nome completo:</label>
+		  			<div class="col-10">
+		  			<input class="form-control" type="text" placeholder="Nome completo" id="fullname" name="fullname">
+		  			
+  				</div>
+			</div>
+			
+			
+			<div class="form-group">
+	  			<label for="password" class="col-2 col-form-label">Email: </label>
+	 			 <div class="col-10">
+	  			  <input class="form-control" type="email" placeholder="Email" id="email" name="email">
+	  			</div>
+			</div>
+			
+			<div class="form-group">
+  				<label for="password" class="col-2 col-form-label">Password: </label>
+ 				 <div class="col-10">
+ 		   			<input class="form-control" type="password" placeholder="senha" id="password" name="password">
+ 			 	</div>
+			</div>
+			
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<input type="submit" class="btn btn-default">
+        	
+		 </form>
+       </div>
+       </div>
+        
+      
+     
+      
     </div>
 
   </div>

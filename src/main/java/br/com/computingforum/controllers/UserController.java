@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class UserController {
 	public String login (HttpServletRequest request){
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		if (username != null){
+		if (username == null){
 			return "erro_autenticacao";
 		}
 		User user = dao.findOne(username);
@@ -41,10 +42,17 @@ public class UserController {
 	
 	
 	@PostMapping("/cadastrar")
-	public String createUser(@RequestBody  User user){
+	public String createUser(@ModelAttribute("form")  User user){
+		user.setIsAdmin(false);
 		dao.save(user);
 		return "login";
 	}
 	
-	
+//	@GetMapping("/")
+//	public String index(){
+//		
+//		
+//		
+//	}
+//	
 }
