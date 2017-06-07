@@ -30,14 +30,15 @@ public class UserController {
 	public String login (HttpServletRequest request){
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		if (username == null){
-			return "erro_autenticacao";
+		if (username == null || password==null){
+			return "tela_login.jsp";
 		}
 		User user = dao.findOne(username);
 		if (user.getPassword().equals(password)){
-			request.setAttribute("username", user.getUsername());
+			request.getSession().setAttribute("username", user.getUsername());
+			return "redirect:/";
 		}
-		return "/";
+		return "tela_login";
 	}
 	
 	
@@ -45,7 +46,13 @@ public class UserController {
 	public String createUser(@ModelAttribute("form")  User user){
 		user.setIsAdmin(false);
 		dao.save(user);
-		return "redirect:login";
+		return "tela_login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request){
+		request.getSession().removeAttribute("username"); // desvicula a secao do usuario
+		return "tela_login";
 	}
 	
 //	@GetMapping("/")
