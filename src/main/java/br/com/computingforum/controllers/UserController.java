@@ -34,6 +34,9 @@ public class UserController {
 			return "tela_login.jsp";
 		}
 		User user = dao.findOne(username);
+		if(user.getPassword() == null || user.getUsername()==null){
+			return "tela_login.jsp";
+		}
 		if (user.getPassword().equals(password)){
 			request.getSession().setAttribute("username", user.getUsername());
 			return "redirect:/";

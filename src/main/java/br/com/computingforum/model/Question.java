@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+
+
 
 
 @Entity(name="questions")
@@ -14,8 +18,13 @@ public class Question {
 	@ManyToOne
 	@JoinColumn(name="username")
 	private User user;
+	@NotNull
 	private String title;
+	@NotNull
 	private String text;
+	@NotNull
+	private category category;
+	
 	public long getId_question() {
 		return id_question;
 	}
@@ -40,5 +49,12 @@ public class Question {
 	public void setText(String text) {
 		this.text = text;
 	}
+	public category getCategory() {
+		return category;
+	}
+	public void setCategory(category category) {
+		this.category = category;
+	}
+	
 	
 }

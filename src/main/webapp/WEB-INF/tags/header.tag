@@ -23,18 +23,17 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-						<li><a href="#">Fazer Pergunta</a></li>
+						<li id="fazer_pergunta"><a>Fazer Pergunta</a></li>
 					</ul>
 				</div>
 				<div class="dropdown pull-right">
-					<button class="btn btn-primary dropdown-toggle" type="button"
+					<button class="btn btn-default dropdown-toggle" type="button"
 						data-toggle="dropdown">
 						${username} <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
 						<li><a href="#">Meu Perfil</a></li>
 						<li><a href="/logout">Logout</a></li>
-
 					</ul>
 				</div>
 			</div>
