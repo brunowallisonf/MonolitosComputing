@@ -1,6 +1,8 @@
 package br.com.computingforum.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,16 +15,16 @@ import javax.validation.constraints.NotNull;
 @Entity(name="questions")
 public class Question {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id_question;
 	
 	@ManyToOne
 	@JoinColumn(name="username")
 	private User user;
-	@NotNull
+	@NotNull(message="O titulo nao pode estar vazio")
 	private String title;
-	@NotNull
+	@NotNull(message="O texto nao pode estar vazio")
 	private String text;
-	@NotNull
 	private category category;
 	
 	public long getId_question() {

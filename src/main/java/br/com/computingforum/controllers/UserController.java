@@ -5,7 +5,9 @@ import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.Pattern;
+import javax.validation.executable.ValidateOnExecution;
 
+import org.hibernate.validator.valuehandling.UnwrapValidatedValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -31,11 +33,11 @@ public class UserController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		if (username == null || password==null){
-			return "tela_login.jsp";
+			return "tela_login";
 		}
 		User user = dao.findOne(username);
-		if(user.getPassword() == null || user.getUsername()==null){
-			return "tela_login.jsp";
+		if(user == null|| user.getPassword() == null || user.getUsername()==null){
+			return "tela_login";
 		}
 		if (user.getPassword().equals(password)){
 			request.getSession().setAttribute("username", user.getUsername());
@@ -46,7 +48,7 @@ public class UserController {
 	
 	
 	@PostMapping("/cadastrar")
-	public String createUser(@ModelAttribute("form")  User user){
+	public String createUser( @ModelAttribute("form")  User user){
 		user.setIsAdmin(false);
 		dao.save(user);
 		return "tela_login";

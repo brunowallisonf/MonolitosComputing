@@ -1,24 +1,29 @@
-<form>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<form:form action="addquestion" modelAttribute="question">
+
+	<div class="form-group">
+		<form:label path="title">Titulo</form:label>
+		<form:input cssClass="form-control" path="title" />
+	</div>
+
+	<div class="form-group">
+		<form:label path="text">Texto</form:label>
+		<form:textarea cssClass="form-control" path="text" />
+	</div>
+	<div class="form-group">
+		<form:label path="category">Selecione uma categoria</form:label>
+		<form:select path="category" cssClass="form-control">
+			<c:forEach var="category" items="${categories}">
+				<c:set var="myText" value="${category}" />
+				<form:option value="${category}">${fn:replace(myText, '_', ' ')}
+				</form:option>
+			</c:forEach>
+			
+		</form:select>
 	
-	<div class="form-group">
-		<label for="title">Titulo</label> 
-		<input type="text" class="form-control" id="title" type="text" name="title">
 	</div>
 
-	<div class="form-group">
-		<label for="text">Texto da pergunta</label>
-		<textarea class="form-control" id="text" name="text"></textarea>
-	</div>
-
-	<div class="form-group">
-		<label for="category">Categoria</label> <select class="form-control"
-			id="category" name="category">
-			<option>Sistemas Operacionais</option>
-			<option>Redes de computadores</option>
-			<option>Segurança da informção</option>
-			<option>Hardware</option>
-			<option>Programacao</option>
-		</select>
-	</div>
-	<input type="submit" class="btn btn-primary pull-right" value="Criar pergunta"/>
-</form>
+	<input type="submit" class="btn btn-primary pull-right" value="Fazer pergunta">
+</form:form>
