@@ -32,7 +32,7 @@ public class QuestionController {
 	public String createQuestion(@ModelAttribute("question") Question question,BindingResult res,@SessionAttribute String username){ //logica de adicao da pergunta
 		User u = userdao.getOne(username);
 		question.setUser(u);
-		
+		question.setIdQuestion(new Long(0));
 		qdao.save(question);
 		return "redirect:/";
 		

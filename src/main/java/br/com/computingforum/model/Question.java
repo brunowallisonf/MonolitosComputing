@@ -14,9 +14,10 @@ import javax.validation.constraints.NotNull;
 
 @Entity(name="questions")
 public class Question {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id_question;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long idQuestion;
 	
 	@ManyToOne
 	@JoinColumn(name="username")
@@ -27,11 +28,13 @@ public class Question {
 	private String text;
 	private category category;
 	
-	public long getId_question() {
-		return id_question;
+	
+	
+	public Long getIdQuestion() {
+		return idQuestion;
 	}
-	public void setId_question(long id_question) {
-		this.id_question = id_question;
+	public void setIdQuestion(Long idQuestion) {
+		this.idQuestion = idQuestion;
 	}
 	public User getUser() {
 		return user;
