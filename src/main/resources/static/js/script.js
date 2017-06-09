@@ -1,5 +1,5 @@
 /**
- * Monolitos computing 
+ * Monolitos computing main scripts
  */
 
 $("#fazer_pergunta").on("click",function(){
@@ -7,4 +7,10 @@ $("#fazer_pergunta").on("click",function(){
 		$("#conteudo").html(response);
 	});
 	
-})
+});
+$("#homeButton").on("click",function(){
+	$.get("/show_all",function(response){
+		$("#conteudo").html(response);
+	});
+	
+});

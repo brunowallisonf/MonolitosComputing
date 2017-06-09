@@ -45,4 +45,12 @@ public class QuestionController {
 		return "add_pergunta";
 				
 	}
+	@GetMapping("/show_all")
+	public ModelAndView showAllQuestions(){
+		ModelAndView mv  = new ModelAndView();
+		mv.addObject("questions", qdao.findAll());
+		mv.setViewName("show_perguntas");
+		return mv;
+		
+	}
 }

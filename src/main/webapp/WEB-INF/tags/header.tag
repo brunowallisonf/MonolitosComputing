@@ -22,7 +22,7 @@
 				<div class="collapse navbar-collapse inline"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+						<li class="active" id="homeButton"><a>Home<span class="sr-only">(current)</span></a></li>
 						<li id="fazer_pergunta"><a>Fazer Pergunta</a></li>
 					</ul>
 				</div>
