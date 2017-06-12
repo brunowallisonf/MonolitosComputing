@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
-nav li{
+nav li, .titulo{
 	cursor:pointer;
 }
+

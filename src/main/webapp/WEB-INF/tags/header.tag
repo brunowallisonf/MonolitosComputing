@@ -21,14 +21,14 @@
 				<div class="collapse navbar-collapse inline"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active" id="homeButton"><a>Home<span class="sr-only">(current)</span></a></li>
-						<li id="fazer_pergunta"><a>Fazer Pergunta</a></li>
+						<li class="active" id="homeButton"><a href="/show_all">Home<span class="sr-only">(current)</span></a></li>
+						<li id="fazer_pergunta"><a href="/fazer-pergunta">Fazer Pergunta</a></li>
 					</ul>
 				</div>
 				<div class="dropdown pull-right">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						data-toggle="dropdown">
-						${username} <span class="caret"></span>
+						${sessionScope.username}<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
 						<li><a href="#">Meu Perfil</a></li>

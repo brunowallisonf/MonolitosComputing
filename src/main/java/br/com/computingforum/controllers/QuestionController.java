@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,7 +33,7 @@ public class QuestionController {
 	public String createQuestion(@ModelAttribute("question") Question question,BindingResult res,@SessionAttribute String username){ //logica de adicao da pergunta
 		User u = userdao.getOne(username);
 		question.setUser(u);
-		question.setIdQuestion(new Long(0));
+		question.setQid(new Long(0));
 		qdao.save(question);
 		return "redirect:/";
 		
@@ -49,8 +50,15 @@ public class QuestionController {
 	public ModelAndView showAllQuestions(){
 		ModelAndView mv  = new ModelAndView();
 		mv.addObject("questions", qdao.findAll());
-		mv.setViewName("show_perguntas");
+		mv.setViewName("home");
 		return mv;
 		
+	}
+	@GetMapping("/show_question")
+	public ModelAndView showQuestion(@RequestParam Long id){
+		ModelAndView mv =  new ModelAndView();
+		mv.addObject("question", qdao.getOne(id));
+		mv.setViewName("view_question");
+		return mv;
 	}
 }

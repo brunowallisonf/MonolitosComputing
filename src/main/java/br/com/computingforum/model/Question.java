@@ -17,7 +17,7 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idQuestion;
+	private Long qid;
 	
 	@ManyToOne
 	@JoinColumn(name="username")
@@ -30,11 +30,13 @@ public class Question {
 	
 	
 	
-	public Long getIdQuestion() {
-		return idQuestion;
+	
+	
+	public Long getQid() {
+		return qid;
 	}
-	public void setIdQuestion(Long idQuestion) {
-		this.idQuestion = idQuestion;
+	public void setQid(Long qid) {
+		this.qid = qid;
 	}
 	public User getUser() {
 		return user;
