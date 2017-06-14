@@ -1,5 +1,5 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
-<%@ attribute name="username" required="true"%>
+
 
 <header>
 	<nav class="navbar navbar-fixed">

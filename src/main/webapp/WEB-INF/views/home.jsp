@@ -11,7 +11,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
 </head>
 <body>
-	<my:header username="${user.username}" />
+	<my:header/>
 	<div class="row" id="conteudo">
 
 		<jsp:include page="show_perguntas.jsp"></jsp:include>

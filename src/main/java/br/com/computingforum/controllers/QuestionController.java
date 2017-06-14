@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import antlr.debug.GuessingEvent;
+import br.com.computingforum.dao.AnswerDao;
 import br.com.computingforum.dao.QuestionDao;
 import br.com.computingforum.dao.UserDao;
+import br.com.computingforum.model.Answer;
 import br.com.computingforum.model.Question;
 import br.com.computingforum.model.User;
 import br.com.computingforum.model.category;
@@ -29,6 +31,9 @@ public class QuestionController {
 	private UserDao userdao;
 	@Autowired
 	private QuestionDao qdao;
+	@Autowired
+	private AnswerDao ansdao;
+	
 	@PostMapping("/addquestion")
 	public String createQuestion(@ModelAttribute("question") Question question,BindingResult res,@SessionAttribute String username){ //logica de adicao da pergunta
 		User u = userdao.getOne(username);
@@ -58,6 +63,8 @@ public class QuestionController {
 	public ModelAndView showQuestion(@RequestParam Long id){
 		ModelAndView mv =  new ModelAndView();
 		mv.addObject("question", qdao.getOne(id));
+		mv.addObject("answers", ansdao.getByQuestion(id));
+		mv.addObject("answer", new Answer()); //nova answer que pode ser adcionada
 		mv.setViewName("view_question");
 		return mv;
 	}

@@ -1,6 +1,8 @@
 package br.com.computingforum.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,14 +13,19 @@ import javax.validation.constraints.NotNull;
 @Entity(name="answers")
 public class Answer {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id_answer;
 	
 	@NotNull
 	private String text;
 	
 	@ManyToOne
-	@JoinColumn(name="id_question")
+	@JoinColumn(name="qid")
 	private Question question;
+	
+	@ManyToOne
+	@JoinColumn(name="username")
+	private User author;
 	
 	@Min(0)
 	@Max(5)
@@ -30,6 +37,14 @@ public class Answer {
 
 	public void setId_answer(long id_answer) {
 		this.id_answer = id_answer;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 
 	public String getText() {

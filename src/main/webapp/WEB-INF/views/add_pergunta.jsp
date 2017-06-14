@@ -13,7 +13,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
 </head>
 <body>
-	<my:header username="${user.username}" />
+	<my:header/>
 
 	<div id="conteudo" class="col-lg-8 col-lg-offset-3">
 
