@@ -1,26 +1,28 @@
 package br.com.computingforum.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.jboss.logging.Message;
 
 @Entity(name="users")
 public class User {
 	@Id
-	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+",message="padrao inexperado somente letras e numeros sem espacos")
+	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+",message="Padrao inexperado,somente letras e numeros sem espacos")
 	private String username;
 	
 	private String bio;
 	
-	@Pattern(regexp="([a-zA-Z]+)(([a-zA-Z]| )*)")
 	private String fullname;
-	
-	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+")
+	@NotEmpty(message="Senha vazia")
+	@NotNull
 	private String password;
 	
 	@Email
+	@NotEmpty(message="Email nao pode estar vazio")
 	private String email;
 	
 	private Boolean isAdmin;

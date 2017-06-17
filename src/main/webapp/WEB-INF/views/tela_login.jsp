@@ -5,6 +5,8 @@
 <head>
 <title>Login</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <body>
 	<header>
@@ -20,97 +22,53 @@
 				<h3 class="panel-title">Login</h3>
 			</div>
 			<div class="panel-body">
-				<form method="POST" action="/login">
+				<c:if test="${erro ne null}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong>ERRO!</strong> ${erro}
+
+					</div>
+				</c:if>
+				<c:if test="${sucesso ne null}">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						${sucesso}
+
+					</div>
+				</c:if>
+				<form:form method="POST" action="/login" modelAttribute="form">
+
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Usuario</span> <input
-							type="text" class="form-control" placeholder="Usuario"
-							aria-describedby="basic-addon1" name="username">
+
+						<span class="input-group-addon" id="basic-addon1">Usuario</span>
+						<form:input path="username" cssClass="form-control" />
 					</div>
 					<br>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Senha</span> <input
-							type="password" class="form-control" placeholder="Senha"
-							aria-describedby="basic-addon1" name="password">
+						<span class="input-group-addon" id="basic-addon1">Senha</span>
+						<form:password path="password" cssClass="form-control" />
 					</div>
 					<br>
 					<button type="submit" class="btn btn-primary pull-right">Entrar
 					</button>
-					<button type="button" class="btn btn-default" data-toggle="modal"
-						data-target="#myModal">Cadastrar - se</button>
+					<button type="button" class="btn btn-default">
+						<a href="/cadastro">Cadastrar - se</a>
+					</button>
 
-				</form>
+				</form:form>
 			</div>
 		</div>
 
 	</div>
 
-	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Cadastro</h4>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<form action="cadastrar" method="post" class="col-xs-10">
-
-							<div class="form-group">
-								<label for="username" class="col-2 col-form-label">
-									Usuario:</label>
-								<div class="col-10">
-									<input class="form-control" type="text" placeholder="Usuario"
-										id="username" name="username">
-
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="fullname" class="col-2 col-form-label">Nome
-									completo:</label>
-								<div class="col-10">
-									<input class="form-control" type="text"
-										placeholder="Nome completo" id="fullname" name="fullname">
-
-								</div>
-							</div>
 
 
-							<div class="form-group">
-								<label for="password" class="col-2 col-form-label">Email:
-								</label>
-								<div class="col-10">
-									<input class="form-control" type="email" placeholder="Email"
-										id="email" name="email">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="password" class="col-2 col-form-label">Password:
-								</label>
-								<div class="col-10">
-									<input class="form-control" type="password" placeholder="senha"
-										id="password" name="password">
-								</div>
-							</div>
-
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-							<input type="submit" class="btn btn-primary">
-
-						</form>
-					</div>
-				</div>
-
-
-
-
-			</div>
-
-		</div>
-	</div>
 
 	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
