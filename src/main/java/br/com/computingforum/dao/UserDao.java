@@ -1,5 +1,7 @@
 package br.com.computingforum.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 

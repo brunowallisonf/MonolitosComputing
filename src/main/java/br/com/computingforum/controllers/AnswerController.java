@@ -12,6 +12,7 @@ import br.com.computingforum.dao.AnswerDao;
 import br.com.computingforum.dao.QuestionDao;
 import br.com.computingforum.dao.UserDao;
 import br.com.computingforum.model.Answer;
+import br.com.computingforum.model.User;
 @Controller
 public class AnswerController {
 
@@ -23,8 +24,8 @@ public class AnswerController {
 	private UserDao udao;
 	@PostMapping("/answers/add/{qid}") // começando a usar padrao REST
 	public String addAnswer(@PathVariable("qid") Long qid, @ModelAttribute("answer") Answer answer, BindingResult res,
-			@SessionAttribute String username) {
-		answer.setAuthor(udao.findOne(username));
+			@SessionAttribute("user") User user) {
+		answer.setAuthor(udao.findOne(user.getUsername()));
 		answer.setQuestion(qdao.getOne(qid));
 		answer.setEvaluation(0);
 		

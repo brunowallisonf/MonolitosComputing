@@ -12,7 +12,7 @@
 	<header>
 		<div class="page-header">
 			<div class="row">
-				<h1 class="col-lg-offset-4">Monolitos computing</h1>
+				<h1 class="col-lg-offset-4"><a href="/">Monolitos computing</a></h1>
 			</div>
 		</div>
 	</header>

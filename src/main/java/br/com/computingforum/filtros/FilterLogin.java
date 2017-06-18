@@ -15,7 +15,7 @@ import br.com.computingforum.model.User;
 public class FilterLogin extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object controller) throws Exception {
-			if(request.getSession().getAttribute("username")!= null)
+			if(request.getSession().getAttribute("user")!= null)
 				return true;
 			
 			request.getRequestDispatcher("/show-login").forward(request, response);

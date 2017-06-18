@@ -35,8 +35,8 @@ public class QuestionController {
 	private AnswerDao ansdao;
 	
 	@PostMapping("/addquestion")
-	public String createQuestion(@ModelAttribute("question") Question question,BindingResult res,@SessionAttribute String username){ //logica de adicao da pergunta
-		User u = userdao.getOne(username);
+	public String createQuestion(@ModelAttribute("question") Question question,BindingResult res,@SessionAttribute("user") User user){ //logica de adicao da pergunta
+		User u = userdao.getOne(user.getUsername());
 		question.setUser(u);
 		question.setQid(new Long(0));
 		qdao.save(question);
@@ -68,4 +68,12 @@ public class QuestionController {
 		mv.setViewName("view_question");
 		return mv;
 	}
+	
+	@GetMapping("/admin/delete_question")
+	public String delete(@RequestParam Long id){
+		ansdao.delete(ansdao.getByQuestion(id)); //deleta todas as respostas da pergunta
+		qdao.delete(id);
+		return "redirect:/admin/show_questions";
+	}
+	
 }

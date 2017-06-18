@@ -7,7 +7,7 @@
 <title>Monolitos Computing - home</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
 </head>
 <body>
