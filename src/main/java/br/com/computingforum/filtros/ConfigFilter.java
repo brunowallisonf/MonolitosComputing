@@ -6,11 +6,13 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 @Configuration
 public class ConfigFilter  extends WebMvcConfigurerAdapter{
-@Autowired FilterLogin filtro;
-	
+@Autowired private FilterLogin filtro;
+@Autowired private FilterAdmin adfiltro;
+@Autowired private FilterLogado logadofiltro;
 	@Override
 	public void addInterceptors(InterceptorRegistry registry){
-		registry.addInterceptor(filtro).addPathPatterns("/logout","addquestion","/fazer-pergunta","/admin/*");
-		
+		registry.addInterceptor(filtro).addPathPatterns("/logout","addquestion","/fazer-pergunta","/admin/*","/answers/add/*");
+		registry.addInterceptor(adfiltro).addPathPatterns("/admin/*");
+		registry.addInterceptor(logadofiltro).addPathPatterns("/show-login","/cadastro","/cadastrar","/login");
 	}
 }
