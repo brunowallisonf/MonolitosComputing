@@ -1,5 +1,5 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header>
 	<nav class="navbar navbar-fixed">
 		<div class="container-fluid">
@@ -26,19 +26,30 @@
 								Pergunta</a></li>
 					</ul>
 				</div>
-				<div class="dropdown pull-right">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						data-toggle="dropdown">
-						${sessionScope.user.username}<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">Meu Perfil</a></li>
-						<li><a href="/logout">Logout</a></li>
-						<c:if test="${sessionScope.user.isAdmin eq true}">
-							<li><a href="/admin/show_panel">Gerenciar Forum</a></li>
-						</c:if>
-					</ul>
-				</div>
+				<c:choose>
+					<c:when test="${sessionScope.user ne null}">
+						<div class="dropdown pull-right">
+							<button class="btn btn-default dropdown-toggle" type="button"
+								data-toggle="dropdown">
+								${sessionScope.user.username}<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Meu Perfil</a></li>
+								<li><a href="/logout">Logout</a></li>
+								<c:if test="${sessionScope.user.isAdmin eq true}">
+									<li><a href="/admin/show_panel">Gerenciar Forum</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</c:when>
+
+					<c:otherwise>
+						<a href="/show-login"><button type="button"
+								class="btn btn-secondary pull-right">Fazer login</button></a>
+					</c:otherwise>
+				</c:choose>
+
+
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
@@ -47,7 +58,9 @@
 
 	<div class="page-header">
 		<div class="row">
-			<h1 class="col-lg-offset-4"><a href="/">Monolitos computing</a></h1>
+			<h1 class="col-lg-offset-4">
+				<a href="/">Monolitos computing</a>
+			</h1>
 		</div>
 	</div>
 </header>

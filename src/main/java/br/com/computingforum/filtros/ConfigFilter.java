@@ -10,7 +10,7 @@ public class ConfigFilter  extends WebMvcConfigurerAdapter{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry){
-		registry.addInterceptor(filtro).addPathPatterns("/","/logout","addquestion");
+		registry.addInterceptor(filtro).addPathPatterns("/logout","addquestion","/fazer-pergunta","/admin/*");
 		
 	}
 }

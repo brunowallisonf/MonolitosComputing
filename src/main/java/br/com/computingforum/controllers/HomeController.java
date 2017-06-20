@@ -1,8 +1,11 @@
 package br.com.computingforum.controllers;
 
 
+import javax.validation.constraints.Null;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,12 +18,14 @@ import br.com.computingforum.model.User;
 public class HomeController
 {	@Autowired
 	UserDao dao;
-	@Autowired QuestionDao qdao;
+@Autowired QuestionDao qdao;
 @GetMapping("/")
-public ModelAndView index(@SessionAttribute("user") User user )
+public ModelAndView index(@SessionAttribute(required=false) User user)
 {
 	ModelAndView mv  =  new ModelAndView();
-	mv.addObject("user", dao.getOne(user.getUsername()));
+	if(user!=null){
+		mv.addObject("user", dao.getOne(user.getUsername()));
+	}
 	mv.setViewName("home");
 	mv.addObject("questions", qdao.findAll());
 	return mv;
