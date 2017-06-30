@@ -25,29 +25,32 @@
 						<li id="fazer_pergunta"><a href="/fazer-pergunta">Fazer
 								Pergunta</a></li>
 					</ul>
-				</div>
-				<c:choose>
-					<c:when test="${sessionScope.user ne null}">
-						<div class="dropdown pull-right">
-							<button class="btn btn-default dropdown-toggle" type="button"
-								data-toggle="dropdown">
-								${sessionScope.user.username}<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li><a href="#">Meu Perfil</a></li>
-								<li><a href="/logout">Logout</a></li>
-								<c:if test="${sessionScope.user.isAdmin eq true}">
-									<li><a href="/admin/show_panel">Gerenciar Forum</a></li>
-								</c:if>
-							</ul>
-						</div>
-					</c:when>
 
-					<c:otherwise>
-						<a href="/show-login"><button type="button"
-								class="btn btn-secondary pull-right">Fazer login</button></a>
-					</c:otherwise>
-				</c:choose>
+					<c:choose>
+						<c:when test="${sessionScope.user ne null}">
+							<div class="dropdown pull-right">
+								<button class="btn btn-default dropdown-toggle" type="button"
+									data-toggle="dropdown">
+									${sessionScope.user.username}<span
+										class="glyphicon glyphicon-user"></span><span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Meu Perfil</a></li>
+									<li><a href="/logout">Logout</a></li>
+									<c:if test="${sessionScope.user.isAdmin eq true}">
+										<li><a href="/admin/show_panel">Gerenciar Forum</a></li>
+									</c:if>
+								</ul>
+							</div>
+						</c:when>
+
+						<c:otherwise>
+							<a href="/show-login"><button type="button"
+									class="btn btn-secondary pull-right">Fazer login</button></a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+
 
 
 			</div>

@@ -11,13 +11,14 @@
 					<th>Categoria</th>
 				</tr>
 			</thead>
-			
+
 			<tbody>
-			
+
 				<c:forEach var="question" items="${questions}">
 					<tr>
 						<td class="hidden id">${question.qid}</td>
-						<td class="titulo"><a href="/show_question?id=${question.qid}">${question.title}</a></td>
+						<td class="titulo"><a
+							href="/show_question?id=${question.qid}">${question.title}</a></td>
 						<td>${question.user.username}</td>
 						<c:set var="myText" value="${question.category}" />
 						<td>${fn:replace(myText, '_', ' ')}</td>
@@ -31,3 +32,5 @@
 
 	</div>
 </div>
+
+

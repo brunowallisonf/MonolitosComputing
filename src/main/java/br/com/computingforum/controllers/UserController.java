@@ -95,13 +95,13 @@ public class UserController {
 	}
 	
 	@GetMapping("/admin/delete_user")
-	public String deleteUser(@RequestParam String username){
-		List<Question> perguntas= questdao.getByUser(username);
+	public String deleteUser(@RequestParam String id){
+		List<Question> perguntas= questdao.getByUser(id);
 		for(Question q: perguntas){
 			ansdao.delete(ansdao.getByQuestion(q.getQid()));
 			questdao.delete(q.getQid());
 		}
-		dao.delete(username);
+		dao.delete(id);
 		return "redirect:/admin/show_users";
 	}
 

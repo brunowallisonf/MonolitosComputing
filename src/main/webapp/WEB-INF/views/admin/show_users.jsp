@@ -14,10 +14,11 @@
 			<tbody>
 				<c:forEach var="user" items="${users}">
 					<tr>
+						<td class="hidden id">${user.username}</td>
 						<td>${user.fullname}</td>
 						<td>${user.email}</td>
 						<td class="username">${user.username}</td>
-						<td class="removeuser"><a>Remover</a></td>
+						<td class="removeruser"><a>Remover</a></td>
 					</tr>
 				</c:forEach>
 
@@ -26,3 +27,5 @@
 
 	</div>
 </div>
+
+
