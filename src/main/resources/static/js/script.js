@@ -1,3 +1,0 @@
-/**
- * Monolitos computing -  Script principal
- */

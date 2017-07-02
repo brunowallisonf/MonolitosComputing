@@ -35,7 +35,7 @@
 										class="glyphicon glyphicon-user"></span><span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Meu Perfil</a></li>
+									<li><a href="/show_user">Meu Perfil</a></li>
 									<li><a href="/logout">Logout</a></li>
 									<c:if test="${sessionScope.user.isAdmin eq true}">
 										<li><a href="/admin/show_panel">Gerenciar Forum</a></li>

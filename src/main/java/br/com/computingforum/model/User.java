@@ -1,6 +1,8 @@
 package br.com.computingforum.model;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -12,6 +14,7 @@ import org.jboss.logging.Message;
 public class User {
 	@Id
 	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+",message="Padrao inexperado,somente letras e numeros sem espacos")
+	
 	private String username;
 	
 	private String bio;
@@ -21,6 +24,7 @@ public class User {
 	@NotNull
 	private String password;
 	
+	@Column(unique=true)
 	@Email
 	@NotEmpty(message="Email nao pode estar vazio")
 	private String email;

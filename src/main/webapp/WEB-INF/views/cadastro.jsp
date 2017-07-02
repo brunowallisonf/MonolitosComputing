@@ -13,7 +13,9 @@
 	<header>
 		<div class="page-header">
 			<div class="row">
-				<h1 class="col-lg-offset-4"><a href="/">Monolitos computing</a></h1>
+				<h1 class="col-lg-offset-4">
+					<a href="/">Monolitos computing</a>
+				</h1>
 			</div>
 		</div>
 	</header>
@@ -29,7 +31,7 @@
 						<div class="alert alert-danger" role="alert">${error.defaultMessage}</div>
 					</c:forEach>
 				</c:if>
-				<form:form action="/cadastrar" method="POST" modelAttribute="form">
+				<form:form action="/cadastrar" method="POST" modelAttribute="form" id="formUsuario">
 
 
 					<div class="form-group">
@@ -49,13 +51,22 @@
 
 					<div class="form-group">
 						<form:label path="password">Senha</form:label>
-						<form:password path="password" cssClass="form-control" />
+						<form:password path="password" cssClass="form-control" id="senha"/>
 					</div>
 
-					<input type="submit" class="btn btn-primary" value="Adicionar">
+					<div class="form-group">
+						<p id="mensagem"></p>
+						<label for="senha2">Confirmar senha</label> <input type="password"
+							class="form-control" required="required" id="senha2">
+					</div>
+
+					<input type="submit" class="btn btn-primary" value="Cadastar">
 				</form:form>
 			</div>
 		</div>
 	</div>
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/formedit.js"></script>
 </body>
 </html>
