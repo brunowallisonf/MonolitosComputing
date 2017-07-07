@@ -117,16 +117,6 @@ public class UserController {
 		return mv;
 	}
 
-	@GetMapping("/admin/delete_user")
-	public String deleteUser(@RequestParam String id) {
-		List<Question> perguntas = questdao.getByUser(id);
-		for (Question q : perguntas) {
-			ansdao.delete(ansdao.getByQuestion(q.getQid()));
-			questdao.delete(q.getQid());
-		}
-		dao.delete(id);
-		return "redirect:/admin/show_users";
-	}
 
 	@GetMapping("/show_user")
 	public ModelAndView getUser(@SessionAttribute User user) {
@@ -135,5 +125,6 @@ public class UserController {
 		mv.setViewName("ver_user");
 		return mv;
 	}
+
 
 }

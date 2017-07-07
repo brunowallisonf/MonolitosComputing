@@ -22,7 +22,7 @@
 						<td>${question.user.username}</td>
 						<c:set var="myText" value="${question.category}" />
 						<td>${fn:replace(myText, '_', ' ')}</td>
-						<td class="remover"><a>Remover</a></td>
+						<td class="remover"><button type="button" class="btn btn-link">Remover</button></td>
 					</tr>
 
 				</c:forEach>

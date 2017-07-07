@@ -63,7 +63,6 @@ $(document).on('click', '.removeruser', function(event){
 $(document).on('click', '#modalclick', function(event){
 	$("#myModal").modal('toggle');
 	var id = $("#myModal #idmodal").val();
-	alert(id);
 	var url = "/admin/"+$("#logica").val();
 	
 	$.get(url,{id:id},function(content){
@@ -73,6 +72,16 @@ $(document).on('click', '#modalclick', function(event){
 			$("#perguntas").html(content);
 		}
 	});
+});
+
+
+$(document).on('click', '.makeAdmin', function(event){
+	var id = $(this).closest('td').siblings('.username').text();
+	
+
+	$.get("/admin/make_admin",{id:id},function(content){
+		$("#home").html(content);
+	})
 });
 
 
