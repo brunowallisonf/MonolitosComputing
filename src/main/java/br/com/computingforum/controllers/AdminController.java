@@ -73,4 +73,20 @@ public class AdminController {
 		return "redirect:/admin/show_users";
 
 	}
+	@GetMapping("/admin/retire_admin")
+	public String retireAdmin(@RequestParam String id) {
+		User user = userdao.getOne(id);
+		if (user != null) {
+			user.setIsAdmin(false);
+			userdao.save(user);
+		}
+		return "redirect:/admin/show_users";
+	}
+	@GetMapping("/admin/delete_question")
+	public String delete(@RequestParam Long id){
+		ansdao.delete(ansdao.getByQuestion(id)); //deleta todas as respostas da pergunta
+		questionDao.delete(id);
+		return "redirect:/admin/show_questions";
+	}
+	
 }

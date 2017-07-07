@@ -84,5 +84,15 @@ $(document).on('click', '.makeAdmin', function(event){
 	})
 });
 
+$(document).on('click', '.retireAdmin', function(event){
+	var id = $(this).closest('td').siblings('.username').text();
+	
+	$.get("/admin/retire_admin",{id:id},function(content){
+		$("#home").html(content);
+	})
+});
+
+
+
 
 

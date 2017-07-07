@@ -69,11 +69,7 @@ public class QuestionController {
 		return mv;
 	}
 	
-	@GetMapping("/admin/delete_question")
-	public String delete(@RequestParam Long id){
-		ansdao.delete(ansdao.getByQuestion(id)); //deleta todas as respostas da pergunta
-		qdao.delete(id);
-		return "redirect:/admin/show_questions";
-	}
+	
+	
 	
 }

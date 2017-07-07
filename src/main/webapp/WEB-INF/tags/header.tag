@@ -62,7 +62,7 @@
 	<div class="page-header">
 		<div class="row">
 			<h1 class="col-lg-offset-4">
-				<a href="/">Monolitos computing</a>
+				<a href="/">Monolitos Computing</a>
 			</h1>
 		</div>
 	</div>
