@@ -9,9 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 
-
-
-
 @Entity(name="questions")
 public class Question {
 	
@@ -27,9 +24,6 @@ public class Question {
 	@NotNull(message="O texto nao pode estar vazio")
 	private String text;
 	private category category;
-	
-	
-	
 	
 	
 	public Long getQid() {

@@ -12,5 +12,6 @@ import br.com.computingforum.model.User;
 @org.springframework.transaction.annotation.Transactional
 public interface UserDao extends JpaRepository<User, String> {
 	
+	public User findByEmail(String email);
 		
 }

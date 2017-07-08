@@ -1,6 +1,7 @@
 package br.com.computingforum.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.jws.WebMethod;
 import javax.servlet.annotation.HttpMethodConstraint;
@@ -31,7 +32,10 @@ import br.com.computingforum.dao.AnswerDao;
 import br.com.computingforum.dao.QuestionDao;
 import br.com.computingforum.dao.UserDao;
 import br.com.computingforum.model.Question;
+import br.com.computingforum.model.Token;
 import br.com.computingforum.model.User;
+import br.com.computingforum.service.implement.EmailServiceImplement;
+import br.com.computingforum.service.implement.TokenServiceImplement;
 
 @Controller
 public class UserController {
@@ -41,7 +45,12 @@ public class UserController {
 	private AnswerDao ansdao;
 	@Autowired
 	private QuestionDao questdao;
-
+	@Autowired
+	private EmailServiceImplement emailservice;
+	
+	@Autowired
+	private TokenServiceImplement tokenservice;
+	
 	@PostMapping("/private/update")
 	public String UpdateUser(@Valid @ModelAttribute("user") User user, BindingResult res, HttpServletRequest req,
 			final RedirectAttributes rd,@SessionAttribute("user") User credencial) {
@@ -143,5 +152,49 @@ public class UserController {
 		return mv;
 
 	}
+	@GetMapping("/show_recover")
+	public String showRecuperacao(){
+		return "recuperar_senha";
+	}
+	
+	@PostMapping("/recover_senha")
+	public String recoverPass(@RequestParam String email,RedirectAttributes rd){
+		User user= dao.findByEmail(email);
+		if(user!=null){
+			Token token =  new Token();
+			token.setUser(user);
+			do{
+				token.setToken(UUID.randomUUID().toString());
+			}while(tokenservice.exists(token.getToken()));
+			tokenservice.save(token);
+			emailservice.recoverEmail(token);
+			String mensagem = "As Informacoes de redefinição foram enviadas para seu email ";
+			rd.addFlashAttribute("sucesso", mensagem);
+			return "redirect:/show-login";
+		}
+		
+		return "/";
+	}
 
+	@GetMapping("/show_redefine")
+	public String showRecover(){
+		return "redefinir_senha";
+	}
+	@PostMapping("/redefine_pass")
+	public String redefine(@RequestParam String token,@RequestParam String password,RedirectAttributes rd){
+		Token tokenv =  tokenservice.getOne(token);
+		if(tokenv!=null&& dao.exists(tokenv.getUser().getUsername())){
+			User u =  tokenv.getUser();
+			u.setPassword(password);
+			dao.save(u);
+			String mensagem = "Senha redefinida com sucesso";
+			
+			rd.addFlashAttribute("sucesso", mensagem);
+			return "redirect:/show-login";
+		}
+		
+		return "redirect:show_redefine";
+	}
+
+	
 }

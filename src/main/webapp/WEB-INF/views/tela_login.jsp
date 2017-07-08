@@ -57,10 +57,11 @@
 					<br>
 					<button type="submit" class="btn btn-primary pull-right">Entrar
 					</button>
+					
 					<button type="button" class="btn btn-default">
 						<a href="/cadastro">Cadastrar - se</a>
 					</button>
-
+					<a href="/show_recover">Esqueci Minha senha</a>
 				</form:form>
 			</div>
 		</div>

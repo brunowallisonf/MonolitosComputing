@@ -31,7 +31,7 @@ public class AnswerController {
 		answer.setEvaluation(0);
 		
 		dao.save(answer);
-		return "redirect:/show_question?id={qid}";
+		return "redirect:/show_question?id="+qid;
 	}
 
 }
