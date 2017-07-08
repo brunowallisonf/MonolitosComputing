@@ -44,25 +44,22 @@ public class UserController {
 
 	@PostMapping("/private/update")
 	public String UpdateUser(@Valid @ModelAttribute("user") User user, BindingResult res, HttpServletRequest req,
-			final RedirectAttributes rd) {
-		if (!res.hasFieldErrors()) {
-			user.setIsAdmin(false);
+			final RedirectAttributes rd,@SessionAttribute User credencial) {
+		if (!res.hasFieldErrors("username")) {
+			user.setIsAdmin(dao.getOne(user.getUsername()).getIsAdmin());
 			String mensagem = "Usuario alterado com sucesso, Por favor faça login novamente";
 			logout(req);
+			dao.save(user);
 			rd.addFlashAttribute("sucesso",mensagem);
 			return "redirect:/show-login";
-
 		}
-
 		rd.addFlashAttribute("erros", res.getFieldErrors());
-		return "/show_user";
-
+		return "/private/show_user";
 	}
 
 	@PostMapping("/login")
 	public String login(@Valid @ModelAttribute("form") User user, BindingResult res, HttpServletRequest req,
 			final RedirectAttributes rd) {
-
 		if (!res.hasFieldErrors("username") && !res.hasFieldErrors("password")) {
 			User userlogin = dao.findOne(user.getUsername());
 			if (userlogin != null && user.getPassword().equals(userlogin.getPassword())) {
@@ -134,4 +131,13 @@ public class UserController {
 		return mv;
 		
 	}
+	@GetMapping("/show_user_perfil")
+	public ModelAndView showPerfil(@RequestParam String username){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", dao.getOne(username));
+		mv.setViewName("show_user_info");
+		return mv;
+		
+	}
+	
 }

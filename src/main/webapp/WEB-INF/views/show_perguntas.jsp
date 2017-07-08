@@ -15,7 +15,7 @@
 				<c:forEach var="question" items="${questions}">
 					<tr>
 						<td class="titulo"><a href="/show_question?id=${question.qid}">${question.title}</a></td>
-						<td>${question.user.username}</td>
+						<td><a href="/show_user_perfil?username=${question.user.username}">${question.user.username}</a></td>
 						<c:set var="myText" value="${question.category}" />
 						<td>${fn:replace(myText, '_', ' ')}</td>
 					</tr>

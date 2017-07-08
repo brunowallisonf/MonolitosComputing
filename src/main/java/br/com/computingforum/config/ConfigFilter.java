@@ -1,9 +1,13 @@
-package br.com.computingforum.filtros;
+package br.com.computingforum.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import br.com.computingforum.filtros.FilterAdmin;
+import br.com.computingforum.filtros.FilterLogado;
+import br.com.computingforum.filtros.FilterLogin;
 @Configuration
 public class ConfigFilter  extends WebMvcConfigurerAdapter{
 @Autowired private FilterLogin filtro;
