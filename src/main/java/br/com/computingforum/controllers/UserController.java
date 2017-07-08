@@ -44,17 +44,21 @@ public class UserController {
 
 	@PostMapping("/private/update")
 	public String UpdateUser(@Valid @ModelAttribute("user") User user, BindingResult res, HttpServletRequest req,
-			final RedirectAttributes rd,@SessionAttribute User credencial) {
+			final RedirectAttributes rd,@SessionAttribute("user") User credencial) {
 		if (!res.hasFieldErrors("username")) {
-			user.setIsAdmin(dao.getOne(user.getUsername()).getIsAdmin());
-			String mensagem = "Usuario alterado com sucesso, Por favor faça login novamente";
-			logout(req);
-			dao.save(user);
-			rd.addFlashAttribute("sucesso",mensagem);
-			return "redirect:/show-login";
+			if(user.getUsername().equals(credencial.getUsername())){
+				user.setIsAdmin(dao.getOne(user.getUsername()).getIsAdmin());
+				String mensagem = "Usuario alterado com sucesso, Por favor faça login novamente";
+				logout(req);
+				dao.save(user);
+				rd.addFlashAttribute("sucesso",mensagem);
+				return "redirect:/show-login";
+			}else{
+				res.addError(new ObjectError("erroCred", "Erro!, Credenciais invalidas"));
+			}
 		}
-		rd.addFlashAttribute("erros", res.getFieldErrors());
-		return "/private/show_user";
+		rd.addFlashAttribute("erros", res.getAllErrors());
+		return "redirect:/private/show_user";
 	}
 
 	@PostMapping("/login")
@@ -129,7 +133,7 @@ public class UserController {
 		mv.addObject("questions",questdao.getByUser(user.getUsername()));
 		mv.setViewName("home");
 		return mv;
-		
+
 	}
 	@GetMapping("/show_user_perfil")
 	public ModelAndView showPerfil(@RequestParam String username){
@@ -137,7 +141,7 @@ public class UserController {
 		mv.addObject("user", dao.getOne(username));
 		mv.setViewName("show_user_info");
 		return mv;
-		
+
 	}
-	
+
 }

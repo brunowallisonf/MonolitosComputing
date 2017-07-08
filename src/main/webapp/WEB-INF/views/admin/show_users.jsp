@@ -16,7 +16,7 @@
 					<tr>
 						<td class="hidden id">${user.username}</td>
 						<td class="username"><a
-							href="/show_user_perfil?username=${question.user.username}">${user.username}</a></td>
+							href="/show_user_perfil?username=${user.username}">${user.username}</a></td>
 						<td>${user.fullname}</td>
 						<td>${user.email}</td>
 

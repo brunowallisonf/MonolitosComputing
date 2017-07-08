@@ -29,10 +29,10 @@
 			modelAttribute="user" id="formUsuario">
 
 
-			<div class="form-group">
+			<div class="form-group hidden">
 				<form:label path="username">Usuario</form:label>
-				<form:input path="username" cssClass="form-control"
-					required="required" />
+				<form:input path="username" cssClass="form-control "
+				/>
 			</div>
 
 			<div class="form-group">
