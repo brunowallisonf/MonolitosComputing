@@ -42,7 +42,7 @@ public class UserController {
 	@Autowired
 	private QuestionDao questdao;
 
-	@PostMapping("/update")
+	@PostMapping("/private/update")
 	public String UpdateUser(@Valid @ModelAttribute("user") User user, BindingResult res, HttpServletRequest req,
 			final RedirectAttributes rd) {
 		if (!res.hasFieldErrors()) {
@@ -94,7 +94,7 @@ public class UserController {
 		return "redirect:/cadastro";
 	}
 
-	@GetMapping("/logout")
+	@GetMapping("/private/logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().removeAttribute("user"); // desvicula a secao
 		// do usuario
@@ -118,7 +118,7 @@ public class UserController {
 	}
 
 
-	@GetMapping("/show_user")
+	@GetMapping("/private/show_user")
 	public ModelAndView getUser(@SessionAttribute User user) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", dao.getOne(user.getUsername()));
@@ -126,5 +126,12 @@ public class UserController {
 		return mv;
 	}
 
-
+	@GetMapping("/private/get_myquestions")
+	public ModelAndView getMyQuestions(@SessionAttribute User user){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("questions",questdao.getByUser(user.getUsername()));
+		mv.setViewName("home");
+		return mv;
+		
+	}
 }

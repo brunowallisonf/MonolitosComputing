@@ -34,7 +34,7 @@ public class QuestionController {
 	@Autowired
 	private AnswerDao ansdao;
 	
-	@PostMapping("/addquestion")
+	@PostMapping("/private/addquestion")
 	public String createQuestion(@ModelAttribute("question") Question question,BindingResult res,@SessionAttribute("user") User user){ //logica de adicao da pergunta
 		User u = userdao.getOne(user.getUsername());
 		question.setUser(u);
@@ -43,7 +43,7 @@ public class QuestionController {
 		return "redirect:/";
 		
 	}
-	@GetMapping("/fazer-pergunta") //mostra o form de pergunta
+	@GetMapping("/private/fazer-pergunta") //mostra o form de pergunta
 	public String show(Model model){
 		
 		model.addAttribute("question", new Question());

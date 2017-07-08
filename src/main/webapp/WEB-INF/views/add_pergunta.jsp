@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Monolitos Computing - home</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -17,7 +17,7 @@
 
 	<div id="conteudo" class="col-lg-8 col-lg-offset-3">
 
-		<form:form action="addquestion" modelAttribute="question">
+		<form:form action="/private/addquestion" modelAttribute="question">
 
 			<div class="form-group">
 				<form:label path="title">Titulo</form:label>
@@ -47,8 +47,8 @@
 	</div>
 
 
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/jquery-3.2.1.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </body>
 
 

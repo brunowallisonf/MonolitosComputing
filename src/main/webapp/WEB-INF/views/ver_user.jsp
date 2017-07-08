@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Monolitos Computing - home</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -22,7 +22,7 @@
 			<div class="alert alert-danger" role="alert">${error.defaultMessage}</div>
 		</c:forEach>
 	</c:if>
-	<form:form action="/update" method="POST" modelAttribute="user" id="formUsuario">
+	<form:form action="/private/update" method="POST" modelAttribute="user" id="formUsuario">
 
 
 		<div class="form-group">
@@ -53,9 +53,9 @@
 		
 		<input type="submit" class="btn btn-primary" value="Editar">
 	</form:form>
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/formedit.js"></script>
+	<script src="/js/jquery-3.2.1.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/formedit.js"></script>
 </body>
 
 

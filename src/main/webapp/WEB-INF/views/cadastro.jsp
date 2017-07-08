@@ -36,22 +36,22 @@
 
 					<div class="form-group">
 						<form:label path="username">Usuario</form:label>
-						<form:input path="username" cssClass="form-control" />
+						<form:input path="username" cssClass="form-control" required="required"/>
 					</div>
 
 					<div class="form-group">
 						<form:label path="email">Email</form:label>
-						<form:input path="email" cssClass="form-control" />
+						<form:input path="email" cssClass="form-control" required="required"/>
 					</div>
 
 					<div class="form-group">
 						<form:label path="fullname">Nome completo</form:label>
-						<form:input path="fullname" cssClass="form-control" />
+						<form:input path="fullname" cssClass="form-control" required="required"/>
 					</div>
 
 					<div class="form-group">
 						<form:label path="password">Senha</form:label>
-						<form:password path="password" cssClass="form-control" id="senha"/>
+						<form:password path="password" cssClass="form-control" id="senha" required="required"/>
 					</div>
 
 					<div class="form-group">
@@ -65,8 +65,8 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/formedit.js"></script>
+	<script src="/js/jquery-3.2.1.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/formedit.js"></script>
 </body>
 </html>

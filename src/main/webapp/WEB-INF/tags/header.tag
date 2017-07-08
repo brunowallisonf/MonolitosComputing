@@ -22,8 +22,10 @@
 					<ul class="nav navbar-nav">
 						<li class="active" id="homeButton"><a href="/show_all">Home<span
 								class="sr-only">(current)</span></a></li>
-						<li id="fazer_pergunta"><a href="/fazer-pergunta">Fazer
+						<li id="fazer_pergunta"><a href="/private/fazer-pergunta">Fazer
 								Pergunta</a></li>
+						<li id="fazer_pergunta"><a href="/private/get_myquestions">Minhas
+								Perguntas</a></li>
 					</ul>
 
 					<c:choose>
@@ -35,8 +37,8 @@
 										class="glyphicon glyphicon-user"></span><span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="/show_user">Meu Perfil</a></li>
-									<li><a href="/logout">Logout</a></li>
+									<li><a href="/private/show_user">Meu Perfil</a></li>
+									<li><a href="/private/logout">Logout</a></li>
 									<c:if test="${sessionScope.user.isAdmin eq true}">
 										<li><a href="/admin/show_panel">Gerenciar Forum</a></li>
 									</c:if>
