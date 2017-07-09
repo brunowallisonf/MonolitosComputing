@@ -172,8 +172,8 @@ public class UserController {
 			rd.addFlashAttribute("sucesso", mensagem);
 			return "redirect:/show-login";
 		}
-		
-		return "/";
+		rd.addFlashAttribute("erro", "Email não cadastrado");
+		return "redirect:/show_recover";
 	}
 
 	@GetMapping("/show_redefine")
