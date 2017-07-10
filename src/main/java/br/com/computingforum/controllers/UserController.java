@@ -89,6 +89,12 @@ public class UserController {
 	@PostMapping("/cadastrar")
 	public String createUser(@Valid @ModelAttribute("form") User user, BindingResult res, HttpServletRequest req,
 			final RedirectAttributes rd) {
+		if(dao.findByEmail(user.getEmail())!=null){
+			res.addError(new ObjectError("erroMail", "Email ja está cadastrado"));
+			rd.addFlashAttribute("erros", res.getAllErrors());
+			return "redirect:/cadastro";
+		}
+		
 		if (!res.hasFieldErrors()) {
 			if (!dao.exists(user.getUsername())) {
 				user.setIsAdmin(false);

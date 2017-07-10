@@ -13,26 +13,20 @@
 	<my:header />
 	<div class="row">
 		<form action="/redefine_pass?token=${param.token}" method="post"
-			class="col-lg-10 col-lg-offset-1">
+			class="col-lg-6 col-lg-offset-3">
 
 			<div class="form-group">
-			<label for="senha">Nova senha:</label>
-				<input type="password" name="password" class="form-control"
-					id="senha" />
+				<label for="senha">Nova senha:</label> <input type="password"
+					name="password" class="form-control" id="senha" />
 			</div>
 
-
-			<div class="form-group">
-				<p id="mensagem"></p>
-				<label for="senha2">Confirmação</label>
-				<input type="password" class="form-control"
-					id="senha2" />
-			</div>
-			
-			<input type="submit" class="btn btn-success pull-right" value="Redefinir senha">
+			<input type="submit" class="btn btn-success pull-right"
+				value="Redefinir senha">
 		</form>
 
 	</div>
-
+	<script src="/js/jquery-3.2.1.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/formedit.js"></script>
 </body>
 </html>

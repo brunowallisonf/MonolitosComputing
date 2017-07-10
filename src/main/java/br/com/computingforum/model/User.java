@@ -13,7 +13,7 @@ import org.jboss.logging.Message;
 @Entity(name="users")
 public class User {
 	@Id
-	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+",message="Padrao inexperado,somente letras e numeros sem espacos")
+	@Pattern(regexp = "([a-z]|[A-Z]|[0-9])+",message="Padrao inexperado no nome de usuario,somente letras e numeros sem espacos")
 	private String username;
 	
 	private String bio;
