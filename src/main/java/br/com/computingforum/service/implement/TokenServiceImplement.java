@@ -1,5 +1,7 @@
 package br.com.computingforum.service.implement;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ public class TokenServiceImplement implements TokenService{
 	@Autowired
 	private TokenRepository tokenrepository;
 	@Override
-	public Token getByUser(User u) {
+	public List <Token>getByUser(User u) {
 		return tokenrepository.findByUser(u);
 	}
 

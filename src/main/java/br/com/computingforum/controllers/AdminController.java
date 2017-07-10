@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.computingforum.dao.AnswerDao;
 import br.com.computingforum.dao.QuestionDao;
+import br.com.computingforum.dao.TokenRepository;
 import br.com.computingforum.dao.UserDao;
 import br.com.computingforum.model.Question;
 import br.com.computingforum.model.User;
@@ -25,6 +26,9 @@ public class AdminController {
 
 	@Autowired
 	private AnswerDao ansdao;
+	
+	@Autowired
+	private TokenRepository tokedao;
 
 	@GetMapping("/admin/show_panel")
 	public ModelAndView showPanel() {
@@ -58,6 +62,8 @@ public class AdminController {
 			ansdao.delete(ansdao.getByQuestion(q.getQid()));
 			questionDao.delete(q.getQid());
 		}
+		ansdao.delete(ansdao.findByAuthor(userdao.getOne(id))); //deleta todas as respostas desse usuario
+		tokedao.delete(tokedao.findByUser(userdao.getOne(id))); //deleta todos os seus tokens
 		userdao.delete(id);
 		return "redirect:/admin/show_users";
 	}

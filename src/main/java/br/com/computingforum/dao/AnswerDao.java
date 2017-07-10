@@ -11,4 +11,6 @@ import br.com.computingforum.model.User;
 public interface AnswerDao extends JpaRepository<Answer, Long> {
 	@Query(value="select * from answers where qid=?1",nativeQuery=true)
 	 List<Answer> getByQuestion(Long id);
+	
+	List<Answer> findByAuthor(User u);
 }
